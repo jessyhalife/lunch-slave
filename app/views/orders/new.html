@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lunch Slave - Order request</title>
+    <link href="/assets/stylesheets/bootstrap.css" rel="stylesheet">
+     <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+</head>
+    <body>
+       <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Lunch Slave</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Quiero comer adentro!</h1><br>
+        <h2>Hoy tenemos:</h2>
+        <br>
+        <form>
+          <% @menus.each do |menu| %>
+        <p><input type='radio' name='plato' value="<%= menu.id %>"/> <%= menu.description %> 
+        <% if menu.name == 'ENSALADA' %>
+          <span class="label label-success">Veggie!</span> 
+        <% end %>
+        <% if menu.name == 'CARNE' %>
+          <span class="label label-important">Hot!</span>
+        <% end %>
+        </p>
+        <% end %>
+        <!--
+        <p><input type='radio' name='plato' value='2'/> <%= @menus[1].description %><span class="label label-success">Veggie!</span> </p>
+        <p> <input type='radio' name='plato' value='3'/> <%= @menus[2].description %><span class="label label-important">Hot!</span> </p>
+      -->
+        <br>
+        <p><a class="btn btn-primary btn-large">Reservame este plato!</a></p></form>
+      </div>
+
+
+      <hr>
+
+      <footer>
+        <p>&copy; #ñoñasPride 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+    </body>
+ 
+ </html>
