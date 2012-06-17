@@ -10,6 +10,12 @@
         padding-bottom: 40px;
       }
     </style>
+    <script type="text/javascript">
+      function get_radio_value()
+      {
+          return "Hola";
+      }
+    </script>
 </head>
     <body>
        <div class="navbar navbar-fixed-top">
@@ -21,7 +27,15 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">Lunch Slave</a>
-           <div class="user-bar">Hola, <%= @user.name %></div>
+           <div class="btn-group pull-right">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="icon-user"></i><%= @user.name %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Mis preferencias</a></li>
+            </ul>
+          </div>           
         </div>
       </div>
     </div>
@@ -33,7 +47,7 @@
         <h1>Quiero comer adentro!</h1><br>
         <h2>Hoy tenemos:</h2>
         <br>
-        <form>
+        <form name="menus">
           <% @menus.each do |menu| %>
         <p><input type='radio' name='plato' value="<%= menu.id %>"/> <%= menu.description %> 
         <% if menu.name == 'ENSALADA' %>
@@ -45,8 +59,10 @@
         </p>
         <% end %>
         <br>
-        <p><a class="btn btn-primary btn-large">Reservame este plato!</a></p></form>
+        <p><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Reservame este plato!</a></p></form>
+        <p>El plato estará listo a partir de las 13:00 hs</p>
       </div>
+
 
 
       <hr>
@@ -54,7 +70,20 @@
       <footer>
         <p>&copy; #ñoñasPride 2012</p>
       </footer>
-
+      <!-- MODAL OK -->
+       <div id="myModal" class="modal hide fade">
+         <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3>Su plato ya esta marchando!</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Estará disponible a partir de las 12:30 hs</h4>
+            <p>Por cualquier inconveniente comuniquese directamente con el cheff.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>
+          </div>
+       </div>
     </div> <!-- /container -->
     </body>
  
