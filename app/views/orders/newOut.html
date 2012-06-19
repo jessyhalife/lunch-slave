@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lunch Slave - Order request</title>
+    <link href="/assets/stylesheets/bootstrap.css" rel="stylesheet">
+     <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <script type="text/javascript">
+      function get_radio_value()
+      {
+          return "Hola";
+      }
+    </script>
+</head>
+    <body>
+       <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Lunch Slave</a>
+           <div class="btn-group pull-right">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="icon-user"></i><%= @user.name %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Mis preferencias</a></li>
+            </ul>
+          </div>           
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Quiero pedir afuera!</h1><br>
+        <h2>Hoy los lugares son:</h2>
+        <br>
+        <form name="places">
+          <% @places.each do |place| %>
+        <p><input type='radio' name='lugar' value="<%= place.id %>"/> <%= place.name %> 
+        - <%= place.address %> - <%= place.website %>
+        <% if place.cuisine == 'ENSALADA' %>
+          <span class="label label-success">Veggie!</span> 
+        <% end %>
+        <% if place.cuisine == 'CARNE' %>
+          <span class="label label-important">Hot!</span>
+        <% end %>
+        </p>
+        <% end %>
+        <br>
+        <p><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Pedime en este lugar!</a></p></form>
+      </div>
+
+
+
+      <hr>
+
+      <footer>
+        <p>&copy; #ñoñasPride 2012</p>
+      </footer>
+      <!-- MODAL OK -->
+       <div id="myModal" class="modal hide fade">
+         <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3>Su pedido ya esta marchando!</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Estará disponible a partir de las 12:30 hs el esclavo elegido del dia de hoy.</h4>
+            <p><strong>Recorda: </strong>Si resultas ser el esclavo, te llegará un mail con el pedido que debes realizar.</p>
+            <p>Que pena! :)</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>
+          </div>
+       </div>
+    </div> <!-- /container -->
+    </body>
+ 
+ </html>

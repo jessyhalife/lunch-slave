@@ -59,4 +59,5 @@ LunchSlave::Application.routes.draw do
 
   # duh
   match '/orders/new' => 'orders#new'
+  match '/orders/newOut' => 'orders#newOut'
 end

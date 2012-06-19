@@ -4,4 +4,9 @@ class OrdersController < ApplicationController
     @user = User.first
   end
 
+  def newOut
+  	@places = Place.all
+  	@user = User.first
+  end
+
 end
